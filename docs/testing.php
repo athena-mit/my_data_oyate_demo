@@ -45,8 +45,36 @@
       </nav>
 
     <h1 class="fw-bold text-center">Contact Us</h1>
+    <h2>Option1</h2>
+    <form method="post" action="subscriberform.php">
+    <textarea name="message"></textarea>
+    <input type="submit">
+    </form>
 
-    
+    <h2>Option2</h2>
+
+    <form action=”mailto:contact@yourdomain.com”
+
+
+    method=”POST”
+
+
+    enctype=”multipart/form-data”
+
+
+    name=”EmailForm”>
+
+
+    Name:<br>
+
+
+    <input type=”text” size=”19″ name=”ContactName”><br><br>
+
+
+    Message:<br> <textarea name=”ContactCommentt” rows=”6″ cols=”20″>
+
+
+    </textarea><br><br> <input type=”submit” value=”Submit”> </form>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
