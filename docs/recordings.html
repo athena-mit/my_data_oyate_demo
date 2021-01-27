@@ -86,10 +86,11 @@
     -->
     <script>
       console.log("I am Ironman");
-      $("#new_button").click(function(){
+      const new_button = document.querySelector('.new_button');
+      new_button.click(function(){
         console.log("hello");
         console.log(words.json[0][0].phrase);
-      });
+      })
     </script>
     <script src="audio.js"></script>
   </body>
