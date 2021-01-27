@@ -69,7 +69,7 @@
     </div>
 
     <h4 class="mx-5">Want a different prompt? Click the button below.</h4>
-    <button type="button" class="mx-5 btn btn-outline-dark">New Prompt</button>
+    <button id="new_button" type="button" class="mx-5 btn btn-outline-dark">New Prompt</button>
     <br>
     <br>
     <br>
@@ -85,5 +85,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     -->
     <script src="audio.js"></script>
+    <script>
+      $("#new_button").click(function(){
+        console.log("hello")
+        console.log(words.json[0][0].phrase)
+      })
+    </script>
   </body>
 </html>
