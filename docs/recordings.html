@@ -95,14 +95,14 @@
 
     $.getJSON("words.json", function(data){
       console.log(data.test123);
-      console.log(data.set1[0].phrase)
+      console.log(data.set_1[0].phrase)
       console.log("_______");
     }); 
 
     $("#new_prompt").click(function(){
       $.getJSON("words.json", function(data){
         console.log("trying");
-        $("#makah_phrase").text(data.set1[0].phrase)
+        $("#makah_phrase").text(data.set_1[0].phrase)
         console.log("done");
       }); 
     })
