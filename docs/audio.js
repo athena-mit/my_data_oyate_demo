@@ -5,6 +5,7 @@ const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
 const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
+const new_button = document.querySelector('.new_button');
 
 // disable stop button while not recording
 
@@ -25,6 +26,11 @@ if (navigator.mediaDevices.getUserMedia) {
 
   let onSuccess = function(stream) {
     const mediaRecorder = new MediaRecorder(stream);
+
+    new_button.onclick = function(){
+      console.log("hello");
+      console.log(words.json[0][0].phrase);
+    }
 
     visualize(stream);
 
