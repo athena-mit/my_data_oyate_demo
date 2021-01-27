@@ -100,9 +100,10 @@
       counter ++;
       console.log("submit: " + counter);
       $.getJSON("words.json", function(data){
-        console.log(data.set1);
+        $.each(data.set1, function(i,f){
+          console.log(f.phrase)
+        });
         console.log("_______");
-        console.log(data.set2);
       });
       $("#submit").prop("disabled", false);
     });
