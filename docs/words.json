@@ -1,10 +1,10 @@
 {   
     "test123": "helloooo",
     "set_1" : [
-        {"phrase": "I like money", "id": "I_like_money_phrase"},
-        {"phrase": "I like cows", "id": "I_like_cow_phrase"},
-        {"phrase": "I like cats", "id": "I_like_cat_phrase"},
-        {"phrase": "I like dogs", "id": "I_like_dogs_phrase"}
+        {"phrase": "kaˑɬkintapimɬapi", "id": "phrase1", "meaning": "strawberry up in the air"},
+        {"phrase": "cacaˑpkʷapuƛ", "id": "phrase2", "meaning": "each bowed their head"},
+        {"phrase": "qʷidiččaʔaˑtx", "id": "phrase3", "meaning": "Makah people"},
+        {"phrase": "yaqeyiqqey", "id": "phrase4", "meaning": "so it happened"}
     ],
     "set_2" : [
         {"phrase": "he likes money", "id": "he_like_money_phrase"},
