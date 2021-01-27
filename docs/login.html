@@ -98,8 +98,17 @@
     <script>
       var emailButton = $("#validationCustomEmail");
       var submitButton = $("#submit1");
+      var firstNameButton = $("#validationCustom01");
+      var lastNameButton = $("#validationCustom02");
+      var input = {}
       submitButton.click(function(){
-        console.log(emailButton.val)
+        console.log(emailButton.val());
+        input.email = emailButton.val();
+        input.first = firstNameButton.val();
+        input.last = lastNameButton.val();
+
+        console.log(input);
+
       })
     </script>
   </body>
