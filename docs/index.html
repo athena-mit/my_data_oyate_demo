@@ -71,14 +71,6 @@
           <a class="btn btn-outline-dark" role="button" href="recordings.html">Record Here</a>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm">
-          <br>
-          <br>
-          <button id="record" type="button" class="btn btn-outline-dark">Record</button>
-          <button id="submit" type="button" class="btn btn-outline-dark" disabled="True">Submit</button>
-        </div>
-      </div>
     </div>
 
     
@@ -94,24 +86,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     -->
   <script>
-    console.log("I am Ironman.");
-    counter = 0;
-    $("#record").click(function(){
-      counter ++;
-      console.log("submit: " + counter);
-      $.getJSON("words.json", function(data){
-        console.log(data.test123);
-        console.log("_______");
-      });
-      $("#submit").prop("disabled", false);
-    });
-
-    submit_counter = 0
-    $("#submit").click(function(){
-      submit_counter ++;
-      console.log("submit: ", submit_counter);
-      $("#submit").prop("disabled", true);
-    })
+    console.log("I am Athena");
 
   </script>
   </body>
