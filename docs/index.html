@@ -100,7 +100,9 @@
       counter ++;
       console.log("submit: " + counter);
       $.getJSON("words.json", function(data){
-        console.log(data.set1[1])
+        console.log(data.set1);
+        console.log("_______");
+        console.log(data.set2);
       });
       $("#submit").prop("disabled", false);
     });
