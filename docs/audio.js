@@ -21,16 +21,18 @@ const canvasCtx = canvas.getContext("2d");
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
 
+  new_button.onclick = function(){
+    console.log("hello");
+    console.log(words.json[0][0].phrase);
+  }
+
   const constraints = { audio: true };
   let chunks = [];
+
 
   let onSuccess = function(stream) {
     const mediaRecorder = new MediaRecorder(stream);
 
-    new_button.onclick = function(){
-      console.log("hello");
-      console.log(words.json[0][0].phrase);
-    }
 
     visualize(stream);
 
