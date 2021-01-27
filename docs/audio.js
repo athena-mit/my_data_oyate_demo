@@ -5,7 +5,7 @@ const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
 const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
-const new_button = document.querySelector('.new_button');
+const new_button = document.querySelector('.submit');
 
 // disable stop button while not recording
 
@@ -20,6 +20,7 @@ const canvasCtx = canvas.getContext("2d");
 
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
+  console.log("hmm");
 
   new_button.onclick = function(){
     console.log("hello");
