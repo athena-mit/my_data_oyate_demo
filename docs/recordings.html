@@ -91,20 +91,25 @@
     -->
     <!-- <script src="audio.js"></script> -->
     <script> 
-    $("#makah_phrase").text("testing")
 
-    $.getJSON("words.json", function(data){
-      console.log(data.test123);
-      console.log(data.set_1[0].phrase)
-      console.log("_______");
-    }); 
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
+    }
 
-    $("#new_prompt").click(function(){
+    function getPrompt(){
       $.getJSON("words.json", function(data){
         console.log("trying");
-        $("#makah_phrase").text(data.set_1[0].phrase)
+        random_index = getRandomInt(Object.keys(data.set_1).length + 1)
+        $("#makah_phrase").text(data.set_1[random_index].phrase)
         console.log("done");
       }); 
+    }
+
+    getPrompt();
+
+    my_index = 0;
+    $("#new_prompt").click(function(){
+      getPrompt(); 
     })
     </script>
   </body>
