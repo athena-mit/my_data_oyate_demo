@@ -94,13 +94,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     -->
   <script>
-    console.log("I am Ironman");
-    counter = 0
+    console.log("I am Ironman.");
+    counter = 0;
     $("#record").click(function(){
       counter ++;
       console.log("submit: " + counter);
+      $.getJSON("words.json", function(data){
+        console.log(data.set1[1])
+      });
       $("#submit").prop("disabled", false);
     });
+
     submit_counter = 0
     $("#submit").click(function(){
       submit_counter ++;
