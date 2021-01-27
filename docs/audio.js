@@ -20,11 +20,11 @@ const canvasCtx = canvas.getContext("2d");
 
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
-  console.log("hmm");
+  console.log('hmm');
 
   new_button.onclick = function(){
-    console.log("hello");
-    console.log(words.json[0][0].phrase);
+    console.log('hello');
+    console.log(document.getJSON("words.json"));
   }
 
   const constraints = { audio: true };
