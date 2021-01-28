@@ -121,6 +121,11 @@
     <h4 class="mx-5">Want another prompt? Click the button below.</h4>
     <button id = "new_prompt" type="button" class="mx-5 btn btn-outline-dark">New Prompt</button>
 
+    <br>
+    <br>
+    <br>
+
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -140,6 +145,7 @@
 
     previous_indices = []
     out_of_phrases = false
+    logged_in = false
 
     function getPrompt(){ //generates and displays Makah phrase
       $.getJSON("words.json", function(data){
@@ -168,7 +174,6 @@
     var lastNameButton = $("#validationCustom02");
     var input = {}
 
-    console.log("testing testing")
     submitButton.click(function(){ //records info when user logs in
       console.log(emailButton.val());
       input.email = emailButton.val();
@@ -177,12 +182,16 @@
 
       console.log(input);
 
+      logged_in = true;
+
       getPrompt();
 
     })
 
     $("#new_prompt").click(function(){ //generates new prompt when button is pushed
-      getPrompt(); 
+      if (logged_in){
+        getPrompt(); 
+      }
     })
     </script>
   </body>
