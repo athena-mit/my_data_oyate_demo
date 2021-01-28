@@ -40,22 +40,60 @@
               <li class="nav-item">
                 <a class="nav-link" href="contactus.html">Contact Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">Log In</a>
-              </li>
             </ul>
           </div>
         </div>
       </nav>
 
-    <h1 class="fw-bold text-center">Makah Recordings</h1>
+    <h1 class="fw-bold text-center">Recording Center</h1>
     <br>
 
-    <h2 class="mx-5 text-decoration-underline">Your Prompt:</h2>
-    <h4 class="mx-5">Here's your phrase/sentence in Makah, practice saying it a couple
-        times and record when you feel ready.
+    <h2 class="mx-5 text-decoration-underline">1. Log In Here</h2>
+    <form class="mx-5 row g-3 needs-validation" novalidate>
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" placeholder="Peter" required>
+        <div class="invalid-feedback">
+          Please enter your first name.
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="validationCustom02" placeholder="Parker" required>
+        <div class="invalid-feedback">
+          Please enter your last name.
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustomEmail" class="form-label">Email</label>
+        <div class="input-group has-validation">
+          <input type="text" class="form-control" id="validationCustomEmail" placeholder="spiderman@gmail.com" required>
+          <div class="invalid-feedback">
+            Please enter your email.
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+          <button id="submit1" class="btn btn-outline-dark" type="button">Log In</button>
+      </div>
+    </form>
+
+    <h2 class="mx-5 text-decoration-underline">2. Record and Submit Your Prompt:</h2>
+    <h4 class="mx-5">Here's your phrase/sentence in Makah, you can record as many times
+      as you like and then submit when you feel satisfied with your recording.
     </h4>
-    <p id="makah_phrase" class="mx-5 fs-1">Insert Makah sentence here</p>
+    <p id="makah_phrase" class="mx-5 fs-1">Log in to get your prompt</p>
     
     <div class="wrapper px-5 text-center">
       <section class="main-controls">
@@ -74,7 +112,7 @@
 
     </div>
 
-    <h4 class="mx-5">Want a different prompt? Click the button below.</h4>
+    <h4 class="mx-5">Want another prompt? Click the button below.</h4>
     <button id = "new_prompt" type="button" class="mx-5 btn btn-outline-dark">New Prompt</button>
     <br>
     <br>
@@ -97,7 +135,7 @@
       return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
     }
 
-    function getPrompt(){
+    function getPrompt(){ //generates and displays Makah phrase
       $.getJSON("words.json", function(data){
         console.log("trying");
         random_index = getRandomInt(Object.keys(data.set_1).length + 1)
@@ -106,10 +144,30 @@
       }); 
     }
 
-    getPrompt();
+    var emailButton = $("#validationCustomEmail");
+    var submitButton = $("#submit1");
+    var firstNameButton = $("#validationCustom01");
+    var lastNameButton = $("#validationCustom02");
+    var input = {}
 
-    my_index = 0;
-    $("#new_prompt").click(function(){
+    console.log("testing testing")
+    submitButton.click(function(){ //records info when user logs in
+      console.log(emailButton.val());
+      input.email = emailButton.val();
+      input.first = firstNameButton.val();
+      input.last = lastNameButton.val();
+
+      emailButton.prop("val", None);
+      firstNameButton.prop("val", None);
+      lastNameButton.prop("val", None);
+
+      console.log(input);
+
+      getPrompt();
+
+    })
+
+    $("#new_prompt").click(function(){ //generates new prompt when button is pushed
       getPrompt(); 
     })
     </script>
