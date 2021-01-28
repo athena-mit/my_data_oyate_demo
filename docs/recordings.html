@@ -51,15 +51,15 @@
     <h2 class="mx-5 text-decoration-underline">1. Log In Here</h2>
     <form class="mx-5 row g-3 needs-validation" novalidate>
       <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">First name</label>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="Peter" required>
+        <label for="validationFirstName" class="form-label">First name</label>
+        <input type="text" class="form-control" id="validationFirstName" placeholder="Peter" required>
         <div class="invalid-feedback">
           Please enter your first name.
         </div>
       </div>
       <div class="col-md-4">
-        <label for="validationCustom02" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="validationCustom02" placeholder="Parker" required>
+        <label for="validationLastName" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="validationLastName" placeholder="Parker" required>
         <div class="invalid-feedback">
           Please enter your last name.
         </div>
@@ -91,26 +91,20 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-12">
         <label for="validationGender" class="form-label">Gender</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio_female">
-          <label class="form-check-label" for="radio_female">
-            Female
-          </label>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio_male">
-          <label class="form-check-label" for="radio_male">
-            Male
-          </label>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio_nb">
-          <label class="form-check-label" for="radio_nb">
-            Non-Binary
-          </label>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio_no_answer">
-          <label class="form-check-label" for="radio_no_answer">
-            Prefer Not to Answer
-          </label>
-        </div>
+        <form id="validationGender">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" 
+              name="genders" id="radioFemale" value="female">Female
+            <input class="form-check-input" type="radio" 
+              name="genders" id="radioMale" value="male">Male
+            <input class="form-check-input" type="radio" 
+              name="genders" id="radioNB" value="nonbinary">Non-Binary
+            <input class="form-check-input" type="radio" 
+              name="genders" id="radioNA" value="noanswer">Prefer Not to Answer
+          </div>          
+        </form>
       </div>
       <div class="col-12">
         <div class="form-check">
@@ -124,7 +118,7 @@
         </div>
       </div>
       <div class="col-12">
-          <button id="submit1" class="btn btn-outline-dark" type="button">Log In</button>
+          <button id="login" class="btn btn-outline-dark" type="button">Log In</button>
       </div>
     </form>
 
@@ -143,7 +137,7 @@
         <div id="buttons" >
           <button id= "record" type="button" class="record btn btn-outline-dark">Record</button>
           <button id ="stop" type="button" class="stop btn btn-outline-dark">Stop</button>
-          <button id = "submit" type="button" class="submit btn btn-outline-dark">Submit</button>
+          <button id = "submit1" type="button" class="submit btn btn-outline-dark">Submit</button>
         </div>
       </section>
       <br>
@@ -185,6 +179,7 @@
     previous_indices = []
     out_of_phrases = false
     logged_in = false
+    current_phrase_id = "None"
 
     function getPrompt(){ //generates and displays Makah phrase
       $.getJSON("words.json", function(data){
@@ -203,21 +198,34 @@
         }else{
         previous_indices.push(random_index);
         $("#makah_phrase").text(data.set_1[random_index].phrase);
+        current_phrase_id = data.set_1[random_index].phrase_id
         console.log("done")}
       }); 
     }
 
-    var emailButton = $("#validationCustomEmail");
-    var submitButton = $("#submit1");
-    var firstNameButton = $("#validationCustom01");
-    var lastNameButton = $("#validationCustom02");
     var input = {}
 
-    submitButton.click(function(){ //records info when user logs in
-      console.log(emailButton.val());
-      input.email = emailButton.val();
-      input.first = firstNameButton.val();
-      input.last = lastNameButton.val();
+    function getGender(){
+      gender_val = "No answer";
+      if ($("#radioFemale").checked){
+        gender_val = "female";
+      } else if ($("#radioMale").checked){
+        gender_val = "male";
+      } else if ($("#radioNB").checked){
+        gender_val = "non-binary";
+      }
+      return gender_val
+    }
+
+    $("#login").click(function(){ //records info when user logs in
+      console.log("logged in");
+      input.email = $("#validationCustomEmail").val();
+      input.first = $("#validationFirstName").val();
+      input.last = $("#validationLastName").val();
+      input.age = $("#validationAge").val();
+      input.experience = $("#validationExperience").val();
+      input.gender = getGender();
+      input.recordings = [];
 
       console.log(input);
 
@@ -225,6 +233,14 @@
 
       getPrompt();
 
+    })
+
+    $("#submit1").click(function(){
+      current_recording = {}
+      console.log("submitted");
+      current_recording.timestamp = Date.now();
+      current_recording.phrase_id = current_phrase_id;
+      input.recordings.push(current_recording);
     })
 
     $("#new_prompt").click(function(){ //generates new prompt when button is pushed
