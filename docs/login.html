@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="col-12">
-            <button id="submit1" class="btn btn-outline-dark" type="submit">Log In</button>
+            <button id="submit1" class="btn btn-outline-dark" type="button">Log In</button>
         </div>
       </form>
 
@@ -114,6 +114,10 @@
         input.email = emailButton.val();
         input.first = firstNameButton.val();
         input.last = lastNameButton.val();
+
+        emailButton.prop("val", None);
+        firstNameButton.prop("val", None);
+        lastNameButton.prop("val", None);
 
         console.log(input);
 
