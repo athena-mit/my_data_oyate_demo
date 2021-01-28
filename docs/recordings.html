@@ -89,6 +89,9 @@
       </div>
     </form>
 
+    <br>
+    <br>
+
     <h2 class="mx-5 text-decoration-underline">2. Record and Submit Your Prompt:</h2>
     <h4 class="mx-5">Here's your phrase/sentence in Makah, you can record as many times
       as you like and then submit when you feel satisfied with your recording.
@@ -112,11 +115,11 @@
 
     </div>
 
+    <br>
+    <br>
+
     <h4 class="mx-5">Want another prompt? Click the button below.</h4>
     <button id = "new_prompt" type="button" class="mx-5 btn btn-outline-dark">New Prompt</button>
-    <br>
-    <br>
-    <br>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -135,12 +138,27 @@
       return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
     }
 
+    previous_indices = []
+    out_of_phrases = False
+
     function getPrompt(){ //generates and displays Makah phrase
       $.getJSON("words.json", function(data){
         console.log("trying");
-        random_index = getRandomInt(Object.keys(data.set_1).length + 1)
-        $("#makah_phrase").text(data.set_1[random_index].phrase)
-        console.log("done");
+        random_index = getRandomInt(Object.keys(data.set_1).length + 1);
+        while (previous_indices.includes(random_index)){
+          random_index = getRandomInt(Object.keys(data.set_1).length + 1);
+          if (previous_indices.length == Object.keys(data.set_1).length){
+            out_of_phrases = true;
+            break;
+          }
+        };
+        if (out_of_phrases){
+          $("#makah_phrase").text("You've seen all our phrases");
+        console.log("done")
+        }else{
+        previous_indices.push(random_index);
+        $("#makah_phrase").text(data.set_1[random_index].phrase);
+        console.log("done")}
       }); 
     }
 
@@ -156,7 +174,7 @@
       input.email = emailButton.val();
       input.first = firstNameButton.val();
       input.last = lastNameButton.val();
-      
+
       console.log(input);
 
       getPrompt();
