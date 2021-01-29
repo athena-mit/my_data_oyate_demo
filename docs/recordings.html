@@ -242,7 +242,9 @@
     $("#submit1").click(function(){
       current_recording = {}
       console.log("submitted");
-      current_recording.timestamp = Date.now();
+      const timeElapsed = Date.now();
+      const today = new Date(timeElapsed);
+      current_recording.timestamp = today.toUTCString();
       current_recording.phrase_id = current_phrase_id;
       input.recordings.push(current_recording);
       console.log(input)
